@@ -4,7 +4,7 @@ LLM Software Toolkit to zestaw lekkich workflowow i skillow pomagajacych w tworz
 
 Pierwsza wersja skupia sie na malym, czytelnym fundamencie:
 
-- CLI do instalacji i aktualizacji toolkitu w projektach docelowych.
+- Instalatory do synchronizacji toolkitu w projektach docelowych.
 - Workflow `new-feature` do prowadzenia pracy nad nowa funkcja.
 - Samodzielne skille do dopracowania biznesowego, planowania, frontendu, backendu, testow i release tagowania.
 - Adaptery opisujace uzycie tych samych workflowow w Codex i Claude Code.
@@ -12,10 +12,24 @@ Pierwsza wersja skupia sie na malym, czytelnym fundamencie:
 
 ## Instalacja w projekcie docelowym
 
-Uruchom CLI z lokalnego repo toolkitu:
+Najprosciej uruchom instalator z katalogu projektu docelowego. Instalator pobierze publiczne repo toolkitu do lokalnego cache i zsynchronizuje `.llm-toolkit/toolkit/`.
+
+Windows PowerShell:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iex (irm https://raw.githubusercontent.com/Krawiec101/llm-software-toolkit/main/install.ps1)"
+```
+
+macOS albo Linux:
 
 ```bash
-python <toolkit-repo>/cli/toolkit.py install --target <project-path>
+curl -fsSL https://raw.githubusercontent.com/Krawiec101/llm-software-toolkit/main/install.sh | sh
+```
+
+Domyslnie instalator pobiera branch `main`. Wersje albo fork mozna wskazac zmiennymi srodowiskowymi:
+
+```bash
+LLM_TOOLKIT_REF=v0.1.1 LLM_TOOLKIT_REPO_URL=https://github.com/Krawiec101/llm-software-toolkit.git sh -c "$(curl -fsSL https://raw.githubusercontent.com/Krawiec101/llm-software-toolkit/main/install.sh)"
 ```
 
 Instalacja utworzy:
@@ -23,19 +37,9 @@ Instalacja utworzy:
 - `.llm-toolkit/toolkit/` - zarzadzana kopia workflowow, skillow, adapterow i dokumentacji.
 - `.llm-toolkit/manifest.json` - manifest z informacja o zrodle instalacji i ostatniej aktualizacji.
 
-Aktualizacja projektu po zmianach w tym repo:
+Ponowne uruchomienie tej samej komendy aktualizuje zarzadzana kopie i zachowuje pierwotna date instalacji w manifescie.
 
-```bash
-python <toolkit-repo>/cli/toolkit.py update --target <project-path>
-```
-
-Status instalacji:
-
-```bash
-python <toolkit-repo>/cli/toolkit.py status --target <project-path>
-```
-
-Katalog `.llm-toolkit/toolkit/` jest zarzadzany przez CLI. Reczne zmiany w tym katalogu moga zostac nadpisane przez `update`.
+Katalog `.llm-toolkit/toolkit/` jest zarzadzany przez instalator. Reczne zmiany w tym katalogu moga zostac nadpisane przy kolejnej synchronizacji.
 
 ## Kontekst projektu docelowego
 
@@ -78,4 +82,4 @@ Skill `release-version` przygotowuje konkretna wersje w formacie SemVer `vX.Y.Z`
 - Kazda istotna zmiana trafia do `CHANGELOG.md`.
 - Wnioski z bledow procesu, niejasnych instrukcji albo zmian w workflowach trafiaja do `docs/lessons-learned.md`.
 - Adaptery dla narzedzi maja byc cienkie i nie powinny duplikowac tresci workflowow.
-- CLI v1 dziala lokalnie, bez pobierania z remote URL i bez zewnetrznych zaleznosci.
+- Skrypty `install.ps1` i `install.sh` synchronizuja lokalna kopie toolkitu z publicznego repo Git.
