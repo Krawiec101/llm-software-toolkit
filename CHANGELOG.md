@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.3.0 - 2026-07-06
+
+- Change `release-version` to calculate patch/minor/major releases from remote tags, prepare release notes, confirm only the commit title, and push the branch plus exact release tag.
+
 ## v0.2.0 - 2026-07-05
 
 - Add one-command project installation scripts that fetch and sync the toolkit from the public Git repository.

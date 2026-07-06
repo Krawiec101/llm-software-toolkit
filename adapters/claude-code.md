@@ -22,12 +22,12 @@ For a new feature request, use:
 
 Follow each stage and preserve its output as context for the next stage.
 
-## Release tagging
+## Release
 
-For preparing a toolkit version, use:
+For preparing and publishing a toolkit release, use:
 
 ```text
 .llm-toolkit/toolkit/skills/release-version/SKILL.md
 ```
 
-The skill may create a local annotated git tag, but it must not push without an explicit user request.
+Use `release-version patch`, `release-version minor`, or `release-version major`. The bump request is consent to prepare release notes, confirm only the commit title with the user, push the current branch to its `origin` upstream, and push exactly the calculated release tag.

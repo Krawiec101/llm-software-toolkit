@@ -75,7 +75,7 @@ Skille sa male i samodzielne. Mozna ich uzywac jako czesci workflowu albo osobno
 
 ## Release
 
-Skill `release-version` przygotowuje konkretna wersje w formacie SemVer `vX.Y.Z`. Sprawdza gotowosc repo, changelog i lessons learned, tworzy lokalny annotated tag oraz pokazuje komende do recznego push.
+Skill `release-version` przygotowuje i publikuje kolejna wersje na podstawie typu zmiany: `patch`, `minor` albo `major`. Wersja jest liczona z tagow na `origin`, a agent przygotowuje release notes, pyta tylko o potwierdzenie tytulu commita, pushuje branch i wypycha dokladnie jeden annotated tag.
 
 ## Zasady rozwoju
 
