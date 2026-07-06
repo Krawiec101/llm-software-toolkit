@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.0.0 - 2026-07-06
+
+- Move the toolkit runtime into `plugins/llm-software-toolkit/` as the canonical Codex and Claude Code plugin.
+- Add native plugin manifests, marketplace metadata, workflow entrypoint skills and plugin-first documentation.
+- Remove shell bootstrap installation as the public distribution model.
+
 ## v0.3.0 - 2026-07-06
 
 - Change `release-version` to calculate patch/minor/major releases from remote tags, prepare release notes, confirm only the commit title, and push the branch plus exact release tag.

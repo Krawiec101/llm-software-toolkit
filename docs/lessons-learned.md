@@ -14,6 +14,12 @@ Ten dokument zapisuje wnioski z rozwoju toolkitu. Dopisuj wpis, gdy zmiana ujawn
 
 ## Entries
 
+### 2026-07-06 - Runtime should be installed as a plugin
+
+- Change: Moved workflow and skill runtime under `plugins/llm-software-toolkit/` and removed shell bootstrap installation from the public flow.
+- Lesson: A toolkit meant for Codex and Claude Code should use native plugin installation instead of asking agents to copy managed files into each project.
+- Follow-up: Keep top-level docs descriptive and keep runtime behavior inside the plugin.
+
 ### 2026-07-06 - Release skills should own the full release flow
 
 - Change: Expanded `release-version` from local tag preparation into a remote-first patch/minor/major release workflow.

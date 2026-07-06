@@ -1,45 +1,53 @@
 # LLM Software Toolkit
 
-LLM Software Toolkit to zestaw lekkich workflowow i skillow pomagajacych w tworzeniu oprogramowania z agentami LLM. Repo jest agnostyczne wzgledem konkretnego modelu albo narzedzia: te same pliki zrodlowe maja byc uzywalne w Codex i Claude Code.
+LLM Software Toolkit to plugin-first zestaw workflowow i skillow pomagajacych w pracy developerskiej z agentami LLM. Runtime toolkitu znajduje sie w `plugins/llm-software-toolkit/` i jest przeznaczony do instalacji bezposrednio przez Codex albo Claude Code.
 
-Pierwsza wersja skupia sie na malym, czytelnym fundamencie:
+Repo jest agnostyczne wzgledem konkretnego modelu, ale nie udaje, ze wszystkie narzedzia maja identyczny mechanizm dystrybucji. Wspolne sa workflowy i skille, a roznice instalacyjne sa opisane w manifestach pluginow i adapterach.
 
-- Instalatory do synchronizacji toolkitu w projektach docelowych.
-- Workflow `new-feature` do prowadzenia pracy nad nowa funkcja.
-- Samodzielne skille do dopracowania biznesowego, planowania, frontendu, backendu, testow i release tagowania.
-- Adaptery opisujace uzycie tych samych workflowow w Codex i Claude Code.
-- Changelog oraz lessons learned, zeby kolejne iteracje byly oparte na wnioskach.
+## Instalacja przez plugin
 
-## Instalacja w projekcie docelowym
+Kanoniczny plugin:
 
-Najprosciej uruchom instalator z katalogu projektu docelowego. Instalator pobierze publiczne repo toolkitu do lokalnego cache i zsynchronizuje `.llm-toolkit/toolkit/`.
-
-Windows PowerShell:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iex (irm https://raw.githubusercontent.com/Krawiec101/llm-software-toolkit/main/install.ps1)"
+```text
+plugins/llm-software-toolkit/
 ```
 
-macOS albo Linux:
+Claude Code:
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/Krawiec101/llm-software-toolkit/main/install.sh | sh
+```text
+/plugin marketplace add <repo-url-or-local-path>
+/plugin install llm-software-toolkit@llm-software-toolkit
 ```
 
-Domyslnie instalator pobiera branch `main`. Wersje albo fork mozna wskazac zmiennymi srodowiskowymi:
+Codex:
 
-```bash
-LLM_TOOLKIT_REF=v0.1.1 LLM_TOOLKIT_REPO_URL=https://github.com/Krawiec101/llm-software-toolkit.git sh -c "$(curl -fsSL https://raw.githubusercontent.com/Krawiec101/llm-software-toolkit/main/install.sh)"
+```text
+codex plugin marketplace add <repo-url-or-local-path>
+codex plugin add llm-software-toolkit@llm-software-toolkit
 ```
 
-Instalacja utworzy:
+Repo zawiera marketplace dla Codex w `.agents/plugins/marketplace.json` oraz marketplace dla Claude Code w `.claude-plugin/marketplace.json`. W projektach docelowych nie kopiuj workflowow recznie; instaluj plugin natywnie w narzedziu.
 
-- `.llm-toolkit/toolkit/` - zarzadzana kopia workflowow, skillow, adapterow i dokumentacji.
-- `.llm-toolkit/manifest.json` - manifest z informacja o zrodle instalacji i ostatniej aktualizacji.
+## Dostepne workflowy
 
-Ponowne uruchomienie tej samej komendy aktualizuje zarzadzana kopie i zachowuje pierwotna date instalacji w manifescie.
+- `new-feature` - prowadzi prace nad nowa funkcja od doprecyzowania wymagan przez plan, implementacje, testy, lokalna walidacje i opis PR.
 
-Katalog `.llm-toolkit/toolkit/` jest zarzadzany przez instalator. Reczne zmiany w tym katalogu moga zostac nadpisane przy kolejnej synchronizacji.
+`implement-feature` jest nazwa znaczeniowa dla `new-feature`, nie osobnym katalogiem. `debug-bug` nie jest dostarczany w tej wersji.
+
+## Skille pluginu
+
+Najwazniejsze entrypointy:
+
+- `llm-software-toolkit:new-feature`
+- `llm-software-toolkit:list-workflows`
+- `llm-software-toolkit:business-refinement`
+- `llm-software-toolkit:implementation-plan`
+- `llm-software-toolkit:frontend-agent`
+- `llm-software-toolkit:backend-agent`
+- `llm-software-toolkit:test-agent`
+- `llm-software-toolkit:release-version`
+
+Skille moga byc uzywane osobno albo jako etapy workflowu `new-feature`.
 
 ## Kontekst projektu docelowego
 
@@ -52,34 +60,18 @@ Workflowy i skille maja zaczynac od zebrania lokalnego kontekstu projektu w tej 
 
 Jesli informacji brakuje, agent ma zapisac jawne zalozenia zamiast zgadywac po cichu.
 
-## Workflowy
+## Dokumentacja
 
-Pierwszy workflow znajduje sie w `workflows/new-feature/WORKFLOW.md`. Prowadzi przez:
-
-1. Dopracowanie pomyslu biznesowego.
-2. Plan implementacji dla agentow frontend, backend i test.
-3. Implementacje frontendu.
-4. Implementacje backendu.
-5. Weryfikacje testowa i raport luk.
-
-## Skille
-
-Skille sa male i samodzielne. Mozna ich uzywac jako czesci workflowu albo osobno:
-
-- `skills/business-refinement/SKILL.md`
-- `skills/implementation-plan/SKILL.md`
-- `skills/frontend-agent/SKILL.md`
-- `skills/backend-agent/SKILL.md`
-- `skills/test-agent/SKILL.md`
-- `skills/release-version/SKILL.md`
-
-## Release
-
-Skill `release-version` przygotowuje i publikuje kolejna wersje na podstawie typu zmiany: `patch`, `minor` albo `major`. Wersja jest liczona z tagow na `origin`, a agent przygotowuje release notes, pyta tylko o potwierdzenie tytulu commita, pushuje branch i wypycha dokladnie jeden annotated tag.
+- `plugins/llm-software-toolkit/README.md` - instalacja i uzycie pluginu.
+- `docs/authoring-guide.md` - zasady tworzenia nowych workflowow i skilli.
+- `docs/compatibility.md` - roznice Codex i Claude Code.
+- `docs/project-onboarding.md` - jak wlaczyc plugin w projekcie bez recznego kopiowania.
+- `docs/lessons-learned.md` - wnioski z rozwoju toolkitu.
 
 ## Zasady rozwoju
 
+- Runtime toolkitu mieszka w `plugins/llm-software-toolkit/`.
+- Workflowy sa pierwszorzednym elementem pluginu, obok skilli, agentow, hookow i MCP.
+- Adaptery dla narzedzi maja byc cienkie i nie powinny duplikowac tresci workflowow.
 - Kazda istotna zmiana trafia do `CHANGELOG.md`.
 - Wnioski z bledow procesu, niejasnych instrukcji albo zmian w workflowach trafiaja do `docs/lessons-learned.md`.
-- Adaptery dla narzedzi maja byc cienkie i nie powinny duplikowac tresci workflowow.
-- Skrypty `install.ps1` i `install.sh` synchronizuja lokalna kopie toolkitu z publicznego repo Git.

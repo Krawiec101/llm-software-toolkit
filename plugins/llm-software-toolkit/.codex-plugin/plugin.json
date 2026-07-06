@@ -1,0 +1,36 @@
+{
+  "name": "llm-software-toolkit",
+  "version": "1.0.0",
+  "description": "Reusable developer workflows and skills for Codex and Claude Code.",
+  "author": {
+    "name": "LLM Software Toolkit"
+  },
+  "homepage": "https://github.com/Krawiec101/llm-software-toolkit",
+  "repository": "https://github.com/Krawiec101/llm-software-toolkit",
+  "license": "MIT",
+  "keywords": [
+    "developer-workflows",
+    "agent-skills",
+    "codex",
+    "claude-code"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "LLM Software Toolkit",
+    "shortDescription": "Repeatable coding workflows for agent-assisted development.",
+    "longDescription": "A plugin-first toolkit of structured workflows, skills, and adapters for implementing features with Codex and Claude Code.",
+    "developerName": "LLM Software Toolkit",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Krawiec101/llm-software-toolkit",
+    "defaultPrompt": [
+      "Use the new-feature workflow for this request.",
+      "List the available developer workflows.",
+      "Plan this feature with toolkit skills."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

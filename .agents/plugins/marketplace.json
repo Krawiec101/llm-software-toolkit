@@ -1,0 +1,20 @@
+{
+  "name": "llm-software-toolkit",
+  "interface": {
+    "displayName": "LLM Software Toolkit"
+  },
+  "plugins": [
+    {
+      "name": "llm-software-toolkit",
+      "source": {
+        "source": "local",
+        "path": "./plugins/llm-software-toolkit"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
