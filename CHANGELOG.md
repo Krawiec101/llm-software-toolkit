@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.1.0 - 2026-07-10
+
+- Restrict `release-version` to plugin runtime, marketplace metadata and directly related release documentation.
+- Require synchronized plugin versions, successful validation and explicit confirmation of the exact publication set before commit or push.
+- Prevent release commits from staging, modifying or publishing unrelated repository changes.
+
 ## v1.0.0 - 2026-07-06
 
 - Move the toolkit runtime into `plugins/llm-software-toolkit/` as the canonical Codex and Claude Code plugin.

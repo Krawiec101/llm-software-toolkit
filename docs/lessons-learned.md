@@ -14,6 +14,12 @@ Ten dokument zapisuje wnioski z rozwoju toolkitu. Dopisuj wpis, gdy zmiana ujawn
 
 ## Entries
 
+### 2026-07-10 - Plugin releases need an explicit boundary
+
+- Change: Restricted `release-version` to plugin runtime, marketplace metadata and directly related release documentation.
+- Lesson: A release skill should publish a reviewed plugin artifact set, not treat every current repository change as release content.
+- Follow-up: Keep the release allowlist, synchronized version checks and staged-file comparison as mandatory publication gates.
+
 ### 2026-07-06 - Runtime should be installed as a plugin
 
 - Change: Moved workflow and skill runtime under `plugins/llm-software-toolkit/` and removed shell bootstrap installation from the public flow.
