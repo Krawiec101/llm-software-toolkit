@@ -25,6 +25,12 @@ Use the workflow skill:
 /llm-software-toolkit:list-workflows
 ```
 
+Prepare a reviewed local project commit with changelog maintenance:
+
+```text
+/llm-software-toolkit:ship
+```
+
 ## Codex
 
 Use the repo marketplace entry in `.agents/plugins/marketplace.json`, then add the plugin from the `llm-software-toolkit` marketplace in Codex:
@@ -41,6 +47,8 @@ plugins/llm-software-toolkit/.codex-plugin/plugin.json
 ```
 
 Use the installed plugin skill `llm-software-toolkit:new-feature` for feature implementation work.
+
+Use `llm-software-toolkit:ship` to create a reviewed local project commit. It never pushes, tags or publishes; `llm-software-toolkit:release-version` is the separate skill for publishing toolkit plugin versions.
 
 ## Workflows
 

@@ -45,9 +45,10 @@ Najwazniejsze entrypointy:
 - `llm-software-toolkit:frontend-agent`
 - `llm-software-toolkit:backend-agent`
 - `llm-software-toolkit:test-agent`
+- `llm-software-toolkit:ship` - przygotowuje changelog i bezpieczny lokalny commit bez pushowania, tagowania ani publikacji.
 - `llm-software-toolkit:release-version`
 
-Skille moga byc uzywane osobno albo jako etapy workflowu `new-feature`.
+Skille moga byc uzywane osobno albo jako etapy workflowu `new-feature`. `ship` zamyka prace lokalnym commitem w projekcie docelowym, a `release-version` publikuje wersje samego pluginu.
 
 ## Kontekst projektu docelowego
 

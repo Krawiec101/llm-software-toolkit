@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.2.0 - 2026-07-10
+
+- Add the `ship` skill for changelog-aware, reviewed local commits with mandatory `main` and `master` branch guards.
+- Allow `release-version` to include root README updates when they document plugin entrypoints or release boundaries.
+- Keep project commit preparation separate from plugin version publishing and remote Git operations.
+
 ## v1.1.0 - 2026-07-10
 
 - Restrict `release-version` to plugin runtime, marketplace metadata and directly related release documentation.

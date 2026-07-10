@@ -14,6 +14,12 @@ Ten dokument zapisuje wnioski z rozwoju toolkitu. Dopisuj wpis, gdy zmiana ujawn
 
 ## Entries
 
+### 2026-07-10 - Shipping and releasing need separate boundaries
+
+- Change: Added `ship` for reviewed local project commits while keeping `release-version` responsible for plugin publication.
+- Lesson: Commit preparation and release publication need different consent gates and Git boundaries even when both maintain a changelog.
+- Follow-up: Keep branch guards, explicit file staging and post-confirmation state checks mandatory for local shipping.
+
 ### 2026-07-10 - Plugin releases need an explicit boundary
 
 - Change: Restricted `release-version` to plugin runtime, marketplace metadata and directly related release documentation.

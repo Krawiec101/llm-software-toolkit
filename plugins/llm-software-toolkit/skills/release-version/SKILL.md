@@ -19,6 +19,7 @@ Allow changes only in:
 - `.agents/plugins/marketplace.json`
 - `.claude-plugin/marketplace.json`
 - `CHANGELOG.md`
+- `README.md`, only when documenting plugin entrypoints, installation or release workflow boundaries
 - `docs/lessons-learned.md`, only when the plugin change introduces a reusable workflow, skill, adapter or release-process lesson
 
 Stop when any tracked, staged or untracked change exists outside this scope. Do not stage, commit, revert, stash or otherwise modify an out-of-scope change.
@@ -82,4 +83,4 @@ git push origin <version>
 
 Stop before committing, tagging or pushing as soon as any step's completion criterion cannot be met. Always stop when an out-of-scope change exists, remote tag state is unavailable, `<version>` already exists, the current branch does not contain the base release, plugin validation fails, version metadata disagrees, the user does not confirm the exact publication set, staged files differ from that set, or any push/tag command fails.
 
-Completion criterion: the confirmed plugin-only release commit is pushed to the upstream branch, the annotated tag exists locally, the exact tag exists on `origin`, and the report names the version, commit title and published files.
+Completion criterion: the confirmed plugin release commit is pushed to the upstream branch, the annotated tag exists locally, the exact tag exists on `origin`, and the report names the version, commit title and published files.
