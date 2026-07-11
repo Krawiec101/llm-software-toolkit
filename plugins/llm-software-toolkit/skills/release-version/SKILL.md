@@ -19,6 +19,7 @@ Allow changes only in:
 - `.agents/plugins/marketplace.json`
 - `.claude-plugin/marketplace.json`
 - `CHANGELOG.md`
+- `AGENTS.md`, only when documenting repository-wide agent rules that govern plugin development or release work
 - `README.md`, only when documenting plugin entrypoints, installation or release workflow boundaries
 - `docs/lessons-learned.md`, only when the plugin change introduces a reusable workflow, skill, adapter or release-process lesson
 

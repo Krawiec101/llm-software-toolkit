@@ -11,9 +11,13 @@ Use the workflow source of truth at `workflows/new-feature/WORKFLOW.md` inside t
 
 1. Read the workflow before planning or editing. Continue only when the workflow sections for inputs, outputs, steps and validation are understood.
 2. Gather target project context in the order required by the workflow. Continue when missing context is recorded as assumptions.
-3. Execute the workflow stages in order unless the user explicitly asks for a single stage.
+3. Execute the workflow stages in order unless the user explicitly asks for a single stage. After business refinement, publish the complete brief and stop until the user explicitly approves that exact version.
 4. Preserve each stage output as context for the next stage.
 5. End with the workflow's required validation report and PR checklist.
+
+## Refinement gate
+
+The user's initial request to implement a feature does not approve the later refinement brief. Before approval, do not produce the final implementation plan, edit files or invoke implementation agents. If the user changes the brief, publish the complete revised version and require approval again.
 
 ## Output
 

@@ -22,7 +22,7 @@ Required inputs:
 - Project constraints from `project.yaml`, `AGENTS.md` or `agent.md`, `CLAUDE.md`, and technology manifests.
 - Acceptance criteria when already known.
 
-When an input is missing, record it as an assumption or ask only if it materially changes scope, behavior or risk.
+When an input is missing, record it as an assumption only when it does not require a product decision. Ask the user when the answer materially changes scope, behavior or risk. Do not invent questions for a complete request.
 
 ## Wyjscia
 
@@ -49,14 +49,15 @@ Record missing context as explicit assumptions.
 
 ## Kroki
 
-1. Analyze requirements. Use `skills/business-refinement/SKILL.md` to identify the actor, problem, expected outcome, in-scope work, out-of-scope work, acceptance criteria, assumptions and open questions.
-2. Identify code areas to change. Inspect existing modules, routes, UI components, domain logic, persistence, tests and integration points before deciding where the feature belongs.
-3. Plan implementation. Use `skills/implementation-plan/SKILL.md` to produce frontend, backend and test briefs, data flow, integration points, risks and suggested order of work.
-4. Implement the smallest coherent feature slice. Use `skills/frontend-agent/SKILL.md` and `skills/backend-agent/SKILL.md` when the work naturally splits across UI and backend concerns; otherwise keep the change in the relevant layer.
-5. Add or update tests. Use `skills/test-agent/SKILL.md` to map acceptance criteria to automated or manual checks and add focused coverage where the project has a pattern.
-6. Run local validation. Execute the repository's configured tests, lint, type checks or build commands that match the changed surface. Record commands, results and skipped checks.
-7. Describe changes. Summarize files changed, behavior implemented, tests run, assumptions and residual risks.
-8. Prepare the PR checklist. Confirm acceptance criteria coverage, validation status, migration or compatibility notes, documentation updates and follow-up work.
+1. Analyze requirements. Use `skills/business-refinement/SKILL.md` to identify the actor, problem, expected outcome, in-scope work, out-of-scope work, acceptance criteria, assumptions and open questions. Publish the complete brief and obtain explicit user approval of that exact version. The initial request to implement the feature is not approval of the later brief. If the user changes or rejects it, republish the complete revised brief and request approval again.
+2. Pass the refinement gate. Until the latest brief is explicitly approved, stop the workflow: do not produce the final implementation plan, edit files or invoke frontend, backend or test implementation agents. No response, an ambiguous response or unresolved material questions do not pass the gate.
+3. Identify code areas to change. Inspect existing modules, routes, UI components, domain logic, persistence, tests and integration points before deciding where the feature belongs.
+4. Plan implementation. Use `skills/implementation-plan/SKILL.md` to produce frontend, backend and test briefs, data flow, integration points, risks and suggested order of work.
+5. Implement the smallest coherent feature slice. Use `skills/frontend-agent/SKILL.md` and `skills/backend-agent/SKILL.md` when the work naturally splits across UI and backend concerns; otherwise keep the change in the relevant layer.
+6. Add or update tests. Use `skills/test-agent/SKILL.md` to map acceptance criteria to automated or manual checks and add focused coverage where the project has a pattern.
+7. Run local validation. Execute the repository's configured tests, lint, type checks or build commands that match the changed surface. Record commands, results and skipped checks.
+8. Describe changes. Summarize files changed, behavior implemented, tests run, assumptions and residual risks.
+9. Prepare the PR checklist. Confirm acceptance criteria coverage, validation status, migration or compatibility notes, documentation updates and follow-up work.
 
 ## Walidacja
 
@@ -73,6 +74,7 @@ The workflow is complete only when every acceptance criterion is verified or lis
 
 - The implementation follows existing repository patterns and ownership boundaries.
 - Every product-scope decision is backed by the refined requirements or recorded as an assumption.
+- The latest complete refinement brief received explicit user approval before planning or implementation began.
 - Tests trace to acceptance criteria or regression risk.
 - Validation commands are appropriate to the changed surface.
 - The final summary is short enough to paste into a PR.

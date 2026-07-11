@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.3.0 - 2026-07-11
+
+- Require the `new-feature` workflow to publish a complete business refinement brief and receive explicit user approval before implementation planning or code changes.
+- Ask clarification questions only for material product decisions and require renewed approval whenever the brief changes.
+- Add repository-wide lessons-learned guidance and allow related `AGENTS.md` process rules in plugin releases.
+
 ## v1.2.0 - 2026-07-10
 
 - Add the `ship` skill for changelog-aware, reviewed local commits with mandatory `main` and `master` branch guards.

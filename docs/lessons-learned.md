@@ -14,6 +14,18 @@ Ten dokument zapisuje wnioski z rozwoju toolkitu. Dopisuj wpis, gdy zmiana ujawn
 
 ## Entries
 
+### 2026-07-11 - Repository agent rules can be release artifacts
+
+- Change: Allowed root `AGENTS.md` in plugin releases when it documents repository-wide rules for plugin development or publication.
+- Lesson: Agent instructions can be part of the shipped development process even when they live outside the plugin runtime directory.
+- Follow-up: Keep `AGENTS.md` release-scoped to reusable plugin or release rules; reject unrelated project instructions.
+
+### 2026-07-11 - Requirement refinement needs explicit user approval
+
+- Change: Added a mandatory refinement brief and approval gate before implementation planning or code changes in the `new-feature` workflow.
+- Lesson: A refinement step can be skipped or performed only internally unless the workflow requires a visible artifact and an explicit user response.
+- Follow-up: Keep product questions limited to material decisions, but never let assumptions or an initial implementation request bypass approval of the latest complete brief.
+
 ### 2026-07-10 - Shipping and releasing need separate boundaries
 
 - Change: Added `ship` for reviewed local project commits while keeping `release-version` responsible for plugin publication.
