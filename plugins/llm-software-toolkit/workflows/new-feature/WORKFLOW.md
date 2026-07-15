@@ -28,8 +28,9 @@ When an input is missing, record it as an assumption only when it does not requi
 
 Expected outputs:
 
-- Refined requirement summary with scope and non-goals.
-- Implementation plan with changed areas, data flow and sequencing.
+- Explicitly approved discovery brief with business value, flows, rules, scope, edge cases, risks and measurable acceptance criteria.
+- Separately approved technical plan with changed areas, contracts, data flow, dependencies, compatibility, verification and sequencing.
+- Delegation report identifying parallel, sequential and locally executed work.
 - Patch implementing the feature, unless blocked.
 - Tests added or updated, or a clear test gap with reason.
 - Local validation results.
@@ -49,21 +50,25 @@ Record missing context as explicit assumptions.
 
 ## Kroki
 
-1. Analyze requirements. Use `skills/business-refinement/SKILL.md` to identify the actor, problem, expected outcome, in-scope work, out-of-scope work, acceptance criteria, assumptions and open questions. Publish the complete brief and obtain explicit user approval of that exact version. The initial request to implement the feature is not approval of the later brief. If the user changes or rejects it, republish the complete revised brief and request approval again.
+1. Run business discovery. Use `skills/business-refinement/SKILL.md` to identify the actor, problem, value, current and target flows, business rules, constraints, scope, non-goals, edge cases, risks, measurable acceptance criteria, assumptions and open questions. Resolve every material product decision, publish the complete brief and obtain explicit user approval of that exact version. The initial request to implement the feature is not approval of the later brief. If the user changes or rejects it, republish the complete revised brief and request approval again.
 2. Pass the refinement gate. Until the latest brief is explicitly approved, stop the workflow: do not produce the final implementation plan, edit files or invoke frontend, backend or test implementation agents. No response, an ambiguous response or unresolved material questions do not pass the gate.
 3. Identify code areas to change. Inspect existing modules, routes, UI components, domain logic, persistence, tests and integration points before deciding where the feature belongs.
-4. Plan implementation. Use `skills/implementation-plan/SKILL.md` to produce frontend, backend and test briefs, data flow, integration points, risks and suggested order of work.
-5. Implement the smallest coherent feature slice. Use `skills/frontend-agent/SKILL.md` and `skills/backend-agent/SKILL.md` when the work naturally splits across UI and backend concerns; otherwise keep the change in the relevant layer.
-6. Add or update tests. Use `skills/test-agent/SKILL.md` to map acceptance criteria to automated or manual checks and add focused coverage where the project has a pattern.
-7. Run local validation. Execute the repository's configured tests, lint, type checks or build commands that match the changed surface. Record commands, results and skipped checks.
-8. Describe changes. Summarize files changed, behavior implemented, tests run, assumptions and residual risks.
-9. Prepare the PR checklist. Confirm acceptance criteria coverage, validation status, migration or compatibility notes, documentation updates and follow-up work.
+4. Plan implementation. Use `skills/implementation-plan/SKILL.md` to map every acceptance criterion to frontend, backend and test briefs; define contracts, data flow, integration points, dependencies, migration or compatibility work, risks and implementation order. Classify frontend/backend briefs as independent or ordered.
+5. Pass the technical-plan gate. Publish the complete technical plan and obtain explicit user approval of that exact version. Until approval, stop the workflow: do not edit implementation files or invoke implementation agents. Approval of the business brief or the initial request does not approve this plan. If any material part changes, republish the complete plan and request approval again.
+6. Coordinate implementation. When approved frontend and backend briefs are independent and the environment supports delegation, invoke both agents in the same coordination step so they run concurrently in the background, then wait for both reports before integration. When briefs depend on one another, run them in dependency order and record the specific constraint. When delegation is unavailable or the change belongs to one layer, implement locally or in the relevant agent and record that mode and reason.
+7. Implement and integrate the smallest coherent feature slice. Use `skills/frontend-agent/SKILL.md` and `skills/backend-agent/SKILL.md` only within their approved briefs. Do not let either agent change product scope or the shared contract independently.
+8. Add or update tests. Use `skills/test-agent/SKILL.md` to map acceptance criteria to automated or manual checks and add focused coverage where the project has a pattern.
+9. Run local validation. Execute the repository's configured tests, lint, type checks or build commands that match the changed surface. Record commands, results and skipped checks.
+10. Describe changes. Summarize files changed, behavior implemented, delegation mode for each task, tests run, assumptions and residual risks.
+11. Prepare the PR checklist. Confirm acceptance criteria coverage, validation status, migration or compatibility notes, documentation updates and follow-up work.
 
 ## Walidacja
 
 The workflow is complete only when every acceptance criterion is verified or listed as an explicit gap. The final report must include:
 
 - Implemented behavior.
+- Approved business brief and technical-plan status.
+- Delegation mode for frontend, backend and test work: parallel, sequential or local, with reasons for every non-parallel path.
 - Tests added or updated.
 - Commands run and results.
 - Skipped validation with reasons.
@@ -75,6 +80,8 @@ The workflow is complete only when every acceptance criterion is verified or lis
 - The implementation follows existing repository patterns and ownership boundaries.
 - Every product-scope decision is backed by the refined requirements or recorded as an assumption.
 - The latest complete refinement brief received explicit user approval before planning or implementation began.
+- The latest complete technical plan received separate explicit user approval before implementation files changed or implementation agents were invoked.
+- Independent frontend and backend briefs were invoked together when delegation was available; every sequential or local path is justified in the final report.
 - Tests trace to acceptance criteria or regression risk.
 - Validation commands are appropriate to the changed surface.
 - The final summary is short enough to paste into a PR.

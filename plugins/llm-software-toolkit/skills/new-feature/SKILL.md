@@ -1,6 +1,6 @@
 ---
 name: new-feature
-description: Run the LLM Software Toolkit new-feature workflow for feature implementation work. Use when a feature request needs requirements analysis, code-area discovery, implementation planning, code changes, tests, validation and PR-ready notes.
+description: Implement a feature through approved business discovery, approved technical planning, coordinated implementation and validation. Use when a feature request spans product decisions, code changes and acceptance verification.
 ---
 
 # New Feature
@@ -9,18 +9,13 @@ Use the workflow source of truth at `workflows/new-feature/WORKFLOW.md` inside t
 
 ## Steps
 
-1. Read the workflow before planning or editing. Continue only when the workflow sections for inputs, outputs, steps and validation are understood.
-2. Gather target project context in the order required by the workflow. Continue when missing context is recorded as assumptions.
-3. Execute the workflow stages in order unless the user explicitly asks for a single stage. After business refinement, publish the complete brief and stop until the user explicitly approves that exact version.
-4. Preserve each stage output as context for the next stage.
-5. End with the workflow's required validation report and PR checklist.
-
-## Refinement gate
-
-The user's initial request to implement a feature does not approve the later refinement brief. Before approval, do not produce the final implementation plan, edit files or invoke implementation agents. If the user changes the brief, publish the complete revised version and require approval again.
+1. Read the complete workflow before planning or editing. Continue when its inputs, outputs, stages, approval gates and validation criteria are understood.
+2. Execute its stages and stop gates in order unless the user explicitly requests one focused stage. Continue when every completed stage satisfies its local continuation condition.
+3. Preserve each approved artifact and stage report as context for the next stage. Continue when no downstream task must rediscover or reinterpret an upstream decision.
+4. End with the workflow's required validation report and PR checklist.
 
 ## Output
 
-Return the workflow output requested by `workflows/new-feature/WORKFLOW.md`: refined requirements, implementation plan, patch summary, tests or gaps, validation results, risks and PR checklist.
+Return every output required by `workflows/new-feature/WORKFLOW.md`.
 
 Completion criterion: the feature workflow has either produced implemented and validated work or a precise blocker report.

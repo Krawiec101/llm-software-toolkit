@@ -14,6 +14,12 @@ Ten dokument zapisuje wnioski z rozwoju toolkitu. Dopisuj wpis, gdy zmiana ujawn
 
 ## Entries
 
+### 2026-07-15 - Planning gates and delegation must be observable
+
+- Change: Added full business discovery, a separate technical-plan approval gate, explicit concurrent delegation for independent frontend/backend work and `Unreleased`-only changelog handling in `ship`.
+- Lesson: Naming a planning stage or multiple agents does not ensure user approval or real concurrency; workflows must define visible stop gates, invocation timing and reporting evidence.
+- Follow-up: Keep business and technical approvals distinct, require reasons for non-parallel execution, and reserve version metadata for the release workflow.
+
 ### 2026-07-11 - Repository agent rules can be release artifacts
 
 - Change: Allowed root `AGENTS.md` in plugin releases when it documents repository-wide rules for plugin development or publication.

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.4.0 - 2026-07-15
+
+- Expand business refinement into full discovery with flows, value, rules, edge cases, risks and measurable acceptance criteria.
+- Require separate approval of the technical implementation plan before code changes or implementation-agent delegation.
+- Run independent frontend and backend briefs concurrently when delegation is available, and report the actual coordination mode.
+- Make `ship` record changes only under `Unreleased` while leaving all versioning to `release-version`.
+
 ## v1.3.0 - 2026-07-11
 
 - Require the `new-feature` workflow to publish a complete business refinement brief and receive explicit user approval before implementation planning or code changes.

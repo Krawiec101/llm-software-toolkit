@@ -30,7 +30,7 @@ Repo zawiera marketplace dla Codex w `.agents/plugins/marketplace.json` oraz mar
 
 ## Dostepne workflowy
 
-- `new-feature` - prowadzi prace nad nowa funkcja od doprecyzowania wymagan przez plan, implementacje, testy, lokalna walidacje i opis PR.
+- `new-feature` - prowadzi prace od pelnego discovery biznesowego przez osobna akceptacje briefu i planu technicznego, rownolegla implementacje niezaleznych warstw, testy, lokalna walidacje i opis PR.
 
 `implement-feature` jest nazwa znaczeniowa dla `new-feature`, nie osobnym katalogiem. `debug-bug` nie jest dostarczany w tej wersji.
 
@@ -45,10 +45,10 @@ Najwazniejsze entrypointy:
 - `llm-software-toolkit:frontend-agent`
 - `llm-software-toolkit:backend-agent`
 - `llm-software-toolkit:test-agent`
-- `llm-software-toolkit:ship` - przygotowuje changelog i bezpieczny lokalny commit bez pushowania, tagowania ani publikacji.
+- `llm-software-toolkit:ship` - dopisuje zmiany do sekcji `Unreleased` i przygotowuje bezpieczny lokalny commit bez wersjonowania, pushowania, tagowania ani publikacji.
 - `llm-software-toolkit:release-version`
 
-Skille moga byc uzywane osobno albo jako etapy workflowu `new-feature`. `ship` zamyka prace lokalnym commitem w projekcie docelowym, a `release-version` publikuje wersje samego pluginu.
+Skille moga byc uzywane osobno albo jako etapy workflowu `new-feature`. `ship` zamyka prace lokalnym commitem i aktualizuje tylko `Unreleased`, a `release-version` jako jedyny publikuje i numeruje wersje samego pluginu.
 
 ## Kontekst projektu docelowego
 

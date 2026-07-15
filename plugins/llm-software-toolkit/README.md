@@ -25,7 +25,7 @@ Use the workflow skill:
 /llm-software-toolkit:list-workflows
 ```
 
-Prepare a reviewed local project commit with changelog maintenance:
+Prepare a reviewed local project commit and record it under `Unreleased` without versioning:
 
 ```text
 /llm-software-toolkit:ship
@@ -48,11 +48,11 @@ plugins/llm-software-toolkit/.codex-plugin/plugin.json
 
 Use the installed plugin skill `llm-software-toolkit:new-feature` for feature implementation work.
 
-Use `llm-software-toolkit:ship` to create a reviewed local project commit. It never pushes, tags or publishes; `llm-software-toolkit:release-version` is the separate skill for publishing toolkit plugin versions.
+Use `llm-software-toolkit:ship` to record changes under `Unreleased` and create a reviewed local project commit. It never versions, pushes, tags or publishes; `llm-software-toolkit:release-version` is the separate skill for publishing toolkit plugin versions.
 
 ## Workflows
 
-- `new-feature` - implement a feature from product intent through planning, code changes, tests, validation and PR notes.
+- `new-feature` - implement a feature through full business discovery, separate approval of the business brief and technical plan, parallel layer work where independent, tests, validation and PR notes.
 
 `implement-feature` is an alias concept for `new-feature`; it is not a separate workflow directory. `debug-bug` is not included in this plugin release.
 
