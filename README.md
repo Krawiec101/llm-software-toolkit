@@ -31,6 +31,7 @@ Repo zawiera marketplace dla Codex w `.agents/plugins/marketplace.json` oraz mar
 ## Dostepne workflowy
 
 - `new-feature` - prowadzi prace od pelnego discovery biznesowego przez osobna akceptacje briefu i planu technicznego, rownolegla implementacje niezaleznych warstw, testy, lokalna walidacje i opis PR.
+- `new-php-api` - tworzy od zera lokalne REST API w PHP na Symfony albo Laravel: prowadzi discovery, dobiera proporcjonalna architekture, dokumentuje decyzje w ADR-ach i zatrzymuje implementacje do jawnej akceptacji raportu.
 
 `implement-feature` jest nazwa znaczeniowa dla `new-feature`, nie osobnym katalogiem. `debug-bug` nie jest dostarczany w tej wersji.
 
@@ -39,6 +40,7 @@ Repo zawiera marketplace dla Codex w `.agents/plugins/marketplace.json` oraz mar
 Najwazniejsze entrypointy:
 
 - `llm-software-toolkit:new-feature`
+- `llm-software-toolkit:new-php-api`
 - `llm-software-toolkit:list-workflows`
 - `llm-software-toolkit:business-refinement`
 - `llm-software-toolkit:implementation-plan`
@@ -48,7 +50,7 @@ Najwazniejsze entrypointy:
 - `llm-software-toolkit:ship` - dopisuje zmiany do sekcji `Unreleased` i przygotowuje bezpieczny lokalny commit bez wersjonowania, pushowania, tagowania ani publikacji.
 - `llm-software-toolkit:release-version`
 
-Skille moga byc uzywane osobno albo jako etapy workflowu `new-feature`. `ship` zamyka prace lokalnym commitem i aktualizuje tylko `Unreleased`, a `release-version` jako jedyny publikuje i numeruje wersje samego pluginu.
+Skille moga byc uzywane osobno albo jako etapy workflowow. Skille `php-*`, bootstrapy Symfony i Laravel, `tooling-research` oraz `implementation-report` obsluguja takze istniejace projekty przez plan i osobna bramke akceptacji. `ship` zamyka prace lokalnym commitem i aktualizuje tylko `Unreleased`, a `release-version` jako jedyny publikuje i numeruje wersje samego pluginu.
 
 ## Kontekst projektu docelowego
 

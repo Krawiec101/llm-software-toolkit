@@ -14,6 +14,12 @@ Ten dokument zapisuje wnioski z rozwoju toolkitu. Dopisuj wpis, gdy zmiana ujawn
 
 ## Entries
 
+### 2026-07-19 - Discovery needs structural validation
+
+- Change: Expanded plugin validation from a partial workflow check to required workflow sections plus skill frontmatter and directory-name consistency.
+- Lesson: Automatically discovered runtime artifacts can appear installed while remaining incomplete or misnamed unless authoring requirements are executable checks.
+- Follow-up: Add validator coverage whenever a new mandatory runtime structure or cross-file contract is introduced.
+
 ### 2026-07-15 - Planning gates and delegation must be observable
 
 - Change: Added full business discovery, a separate technical-plan approval gate, explicit concurrent delegation for independent frontend/backend work and `Unreleased`-only changelog handling in `ship`.

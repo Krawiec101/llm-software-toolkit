@@ -62,6 +62,12 @@ Record missing context as explicit assumptions.
 10. Describe changes. Summarize files changed, behavior implemented, delegation mode for each task, tests run, assumptions and residual risks.
 11. Prepare the PR checklist. Confirm acceptance criteria coverage, validation status, migration or compatibility notes, documentation updates and follow-up work.
 
+## Bramki akceptacji
+
+- The latest complete business brief requires explicit user approval before technical planning.
+- The latest complete technical plan requires separate explicit user approval before implementation edits or implementation-agent invocation.
+- Silence, ambiguity, the initial feature request or approval of an earlier artifact does not pass either gate; a material revision returns to the applicable gate.
+
 ## Walidacja
 
 The workflow is complete only when every acceptance criterion is verified or listed as an explicit gap. The final report must include:
