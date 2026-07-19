@@ -22,6 +22,7 @@ Use the workflow skill:
 
 ```text
 /llm-software-toolkit:new-feature
+/llm-software-toolkit:new-php-api
 /llm-software-toolkit:list-workflows
 ```
 
@@ -46,13 +47,14 @@ The plugin manifest is:
 plugins/llm-software-toolkit/.codex-plugin/plugin.json
 ```
 
-Use the installed plugin skill `llm-software-toolkit:new-feature` for feature implementation work.
+Use `llm-software-toolkit:new-feature` for feature implementation work. Use `llm-software-toolkit:new-php-api` to create a local Symfony or Laravel JSON REST API from scratch; it stops after proposed ADRs and the architecture report until you explicitly approve implementation.
 
 Use `llm-software-toolkit:ship` to record changes under `Unreleased` and create a reviewed local project commit. It never versions, pushes, tags or publishes; `llm-software-toolkit:release-version` is the separate skill for publishing toolkit plugin versions.
 
 ## Workflows
 
 - `new-feature` - implement a feature through full business discovery, separate approval of the business brief and technical plan, parallel layer work where independent, tests, validation and PR notes.
+- `new-php-api` - create a local PHP REST API from discovery through proportional architecture selection, current tooling research, ADR approval, implementation and ADR-aligned validation.
 
 `implement-feature` is an alias concept for `new-feature`; it is not a separate workflow directory. `debug-bug` is not included in this plugin release.
 

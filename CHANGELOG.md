@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- Add the `new-php-api` workflow for new local Symfony or Laravel JSON REST APIs with a hard architecture-report approval gate, ADR lifecycle and resumable validation.
+- Add its entrypoint, 18 independently invocable planning, research, bootstrap, implementation, documentation and validation skills, plus their shared idempotent approval contract.
+- Expand plugin validation to cover required workflow sections and skill frontmatter/name consistency.
+
 ## v1.4.0 - 2026-07-15
 
 - Expand business refinement into full discovery with flows, value, rules, edge cases, risks and measurable acceptance criteria.
