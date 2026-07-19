@@ -1,0 +1,4 @@
+interface:
+  display_name: "Decision Tradeoffs"
+  short_description: "Learn to compare options and their tradeoffs"
+  default_prompt: "Use $decision-tradeoffs to clarify my requirements, ask separately about each option's benefits and drawbacks, and then analyze the tradeoffs."

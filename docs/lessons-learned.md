@@ -14,6 +14,12 @@ Ten dokument zapisuje wnioski z rozwoju toolkitu. Dopisuj wpis, gdy zmiana ujawn
 
 ## Entries
 
+### 2026-07-19 - Decision support should elicit before advising
+
+- Change: Split `decision-tradeoffs` into requirements clarification, separate benefits and drawbacks turns for each option, and a later analysis that responds before adding new considerations.
+- Lesson: A decision-support skill can produce a useful answer while failing to teach if it supplies tradeoffs too early, groups every option together or combines positive and negative reflection in one prompt.
+- Follow-up: Keep explicit wait gates after requirements, benefits and drawbacks for each option, then distinguish user-supplied arguments from model-added considerations.
+
 ### 2026-07-15 - Planning gates and delegation must be observable
 
 - Change: Added full business discovery, a separate technical-plan approval gate, explicit concurrent delegation for independent frontend/backend work and `Unreleased`-only changelog handling in `ship`.

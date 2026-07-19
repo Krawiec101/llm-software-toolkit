@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.5.0 - 2026-07-19
+
+- Add the `decision-tradeoffs` skill to clarify requirements, elicit each option's benefits and drawbacks in separate turns, respond to the user's reasoning, add missed considerations and produce a concise conclusion.
+
 ## v1.4.0 - 2026-07-15
 
 - Expand business refinement into full discovery with flows, value, rules, edge cases, risks and measurable acceptance criteria.

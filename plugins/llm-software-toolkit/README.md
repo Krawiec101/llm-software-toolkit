@@ -48,6 +48,8 @@ plugins/llm-software-toolkit/.codex-plugin/plugin.json
 
 Use the installed plugin skill `llm-software-toolkit:new-feature` for feature implementation work.
 
+Use `llm-software-toolkit:decision-tradeoffs` to clarify your requirements, examine each option's benefits and drawbacks in separate turns, then compare them with feedback, additional considerations and a concise decision summary.
+
 Use `llm-software-toolkit:ship` to record changes under `Unreleased` and create a reviewed local project commit. It never versions, pushes, tags or publishes; `llm-software-toolkit:release-version` is the separate skill for publishing toolkit plugin versions.
 
 ## Workflows

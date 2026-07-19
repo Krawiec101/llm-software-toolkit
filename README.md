@@ -41,6 +41,7 @@ Najwazniejsze entrypointy:
 - `llm-software-toolkit:new-feature`
 - `llm-software-toolkit:list-workflows`
 - `llm-software-toolkit:business-refinement`
+- `llm-software-toolkit:decision-tradeoffs` - doprecyzowuje wymagania, pyta osobno o plusy i minusy kazdej opcji, a potem komentuje argumenty, uzupelnia kompromisy i podsumowuje wybor.
 - `llm-software-toolkit:implementation-plan`
 - `llm-software-toolkit:frontend-agent`
 - `llm-software-toolkit:backend-agent`
