@@ -19,6 +19,8 @@ plugins/llm-software-toolkit/workflows/new-feature/WORKFLOW.md
 
 When the plugin is installed, invoke the namespaced skill `llm-software-toolkit:new-feature` or ask Codex to use the installed plugin's `new-feature` workflow.
 
+The workflow requires native fresh subagents without the lead conversation history for frontend, backend and test execution. If Codex cannot provide that isolation, report the workflow as blocked; do not execute those roles in the lead context.
+
 ## Single skills
 
 Use a single plugin skill when the user asks for a focused task such as business refinement, implementation planning, frontend work, backend work, testing or release tagging.

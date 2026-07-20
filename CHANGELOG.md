@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.6.0 - 2026-07-20
+
+- Require fresh history-isolated frontend, backend and test subagents in `new-feature`, with fail-closed behavior when native isolation is unavailable.
+- Define artifact-packet handoffs, observable delegation reports and independent post-integration verification while preserving standalone role-skill usage.
+- Extend plugin validation and release scope to protect the isolated-execution contract and publish its repository validator changes.
+
 ## v1.5.0 - 2026-07-19
 
 - Add the `decision-tradeoffs` skill to clarify requirements, elicit each option's benefits and drawbacks in separate turns, respond to the user's reasoning, add missed considerations and produce a concise conclusion.

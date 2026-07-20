@@ -40,6 +40,23 @@ validate_workflow() {
         || error "$workflow_file is missing section: kroki / steps"
     has_heading "$workflow_file" "walidacja|validation" \
         || error "$workflow_file is missing section: walidacja / validation"
+
+    if [ "$(basename "$workflow_dir")" = "new-feature" ]; then
+        grep -Eiq 'new isolated subagent|fresh isolated subagent' "$workflow_file" \
+            || error "$workflow_file must require fresh isolated execution subagents"
+        grep -Eiq 'artifact packet' "$workflow_file" \
+            || error "$workflow_file must define the execution artifact packet"
+        grep -Eiq 'never the full conversation history' "$workflow_file" \
+            || error "$workflow_file must prohibit full conversation history handoff"
+        grep -Eiq 'do not use local execution.*fallback' "$workflow_file" \
+            || error "$workflow_file must fail closed without a local-execution fallback"
+        grep -Eiq 'fresh isolated test subagent' "$workflow_file" \
+            || error "$workflow_file must require a fresh post-integration test subagent"
+        grep -Eiq 'subagent id.*role.*parallel or sequential mode.*handed-off artifacts.*status.*result.*changed areas.*validation.*blockers.*risks' "$workflow_file" \
+            || error "$workflow_file must define all delegation report fields"
+        grep -Eiq 'must not perform frontend, backend or test execution' "$workflow_file" \
+            || error "$workflow_file must prohibit execution roles in the lead context"
+    fi
 }
 
 line_is_placeholder() {

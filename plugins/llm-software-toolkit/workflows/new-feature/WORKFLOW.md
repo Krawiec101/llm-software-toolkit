@@ -30,7 +30,7 @@ Expected outputs:
 
 - Explicitly approved discovery brief with business value, flows, rules, scope, edge cases, risks and measurable acceptance criteria.
 - Separately approved technical plan with changed areas, contracts, data flow, dependencies, compatibility, verification and sequencing.
-- Delegation report identifying parallel, sequential and locally executed work.
+- Delegation report for every execution subagent.
 - Patch implementing the feature, unless blocked.
 - Tests added or updated, or a clear test gap with reason.
 - Local validation results.
@@ -55,12 +55,14 @@ Record missing context as explicit assumptions.
 3. Identify code areas to change. Inspect existing modules, routes, UI components, domain logic, persistence, tests and integration points before deciding where the feature belongs.
 4. Plan implementation. Use `skills/implementation-plan/SKILL.md` to map every acceptance criterion to frontend, backend and test briefs; define contracts, data flow, integration points, dependencies, migration or compatibility work, risks and implementation order. Classify frontend/backend briefs as independent or ordered.
 5. Pass the technical-plan gate. Publish the complete technical plan and obtain explicit user approval of that exact version. Until approval, stop the workflow: do not edit implementation files or invoke implementation agents. Approval of the business brief or the initial request does not approve this plan. If any material part changes, republish the complete plan and request approval again.
-6. Coordinate implementation. When approved frontend and backend briefs are independent and the environment supports delegation, invoke both agents in the same coordination step so they run concurrently in the background, then wait for both reports before integration. When briefs depend on one another, run them in dependency order and record the specific constraint. When delegation is unavailable or the change belongs to one layer, implement locally or in the relevant agent and record that mode and reason.
-7. Implement and integrate the smallest coherent feature slice. Use `skills/frontend-agent/SKILL.md` and `skills/backend-agent/SKILL.md` only within their approved briefs. Do not let either agent change product scope or the shared contract independently.
-8. Add or update tests. Use `skills/test-agent/SKILL.md` to map acceptance criteria to automated or manual checks and add focused coverage where the project has a pattern.
-9. Run local validation. Execute the repository's configured tests, lint, type checks or build commands that match the changed surface. Record commands, results and skipped checks.
-10. Describe changes. Summarize files changed, behavior implemented, delegation mode for each task, tests run, assumptions and residual risks.
-11. Prepare the PR checklist. Confirm acceptance criteria coverage, validation status, migration or compatibility notes, documentation updates and follow-up work.
+6. Require native isolated subagents. The lead context owns discovery, planning, dispatch, integration and the final report; it must not perform frontend, backend or test execution. If the host cannot create a new subagent without the main conversation history, stop as blocked. Do not use local execution, role simulation or a full-history child as fallback.
+7. Build one artifact packet per assigned role. Each packet must contain the role, approved business brief, approved technical plan, role task brief, assigned acceptance criteria, constraints and pointers to repository instructions. The packet is complete only when the role can execute without the main conversation history; do not dispatch an incomplete packet.
+8. Dispatch implementation. Create a new isolated frontend subagent for frontend work and a new isolated backend subagent for backend work. Invoke independent briefs together and wait for both; invoke dependent briefs sequentially in the plan's dependency order and record the constraint. Every used role receives only its artifact packet and repository state, never the full conversation history. Use `skills/frontend-agent/SKILL.md` and `skills/backend-agent/SKILL.md` within their approved briefs; neither may change product scope or the shared contract independently.
+9. Integrate the smallest coherent feature slice in the lead context. Reconcile reports and shared contracts without taking over unfinished role implementation. If rework is needed, dispatch a new isolated role subagent with a revised artifact packet.
+10. Verify after integration. Create a fresh isolated test subagent with its artifact packet only after frontend/backend integration is complete. Use `skills/test-agent/SKILL.md` to map every acceptance criterion to automated or manual checks and add focused coverage where the project has a pattern.
+11. Run integration validation in the lead context. Execute the repository's configured tests, lint, type checks or build commands that match the integrated surface. Record commands, results and skipped checks.
+12. Describe changes. For every dispatched subagent report: subagent id, role, parallel or sequential mode, handed-off artifacts, status, result, changed areas, validation, blockers and risks. Also summarize integrated behavior, assumptions and residual risks.
+13. Prepare the PR checklist. Confirm acceptance criteria coverage, validation status, migration or compatibility notes, documentation updates and follow-up work.
 
 ## Walidacja
 
@@ -68,7 +70,7 @@ The workflow is complete only when every acceptance criterion is verified or lis
 
 - Implemented behavior.
 - Approved business brief and technical-plan status.
-- Delegation mode for frontend, backend and test work: parallel, sequential or local, with reasons for every non-parallel path.
+- For every execution subagent: id, role, parallel or sequential mode, handed-off artifacts, status, result, changed areas, validation, blockers and risks.
 - Tests added or updated.
 - Commands run and results.
 - Skipped validation with reasons.
@@ -81,7 +83,10 @@ The workflow is complete only when every acceptance criterion is verified or lis
 - Every product-scope decision is backed by the refined requirements or recorded as an assumption.
 - The latest complete refinement brief received explicit user approval before planning or implementation began.
 - The latest complete technical plan received separate explicit user approval before implementation files changed or implementation agents were invoked.
-- Independent frontend and backend briefs were invoked together when delegation was available; every sequential or local path is justified in the final report.
+- No frontend, backend or test execution occurred in the lead context, a full-history child or a simulated role.
+- Every used execution role was a new isolated subagent receiving the complete artifact packet.
+- Independent frontend and backend briefs were invoked together; every sequential path is justified by a plan dependency.
+- The test role was a fresh isolated subagent dispatched only after integration.
 - Tests trace to acceptance criteria or regression risk.
 - Validation commands are appropriate to the changed surface.
 - The final summary is short enough to paste into a PR.
@@ -98,11 +103,11 @@ The workflow is complete only when every acceptance criterion is verified or lis
 
 ## Powiazani agenci Claude Code
 
-No dedicated Claude Code subagent is required. If the target project already defines frontend, backend, test or review subagents, the lead session may delegate the matching stage while preserving this workflow as the source of truth.
+Claude Code must provide fresh Task subagents for every used frontend, backend and test role. Project-defined role agents may be used only when each invocation is new and receives the artifact packet instead of the main conversation history.
 
 ## Powiazane szablony agentow Codex
 
-No dedicated Codex agent template is required. Invoke the plugin skill `llm-software-toolkit:new-feature` or ask Codex to use this workflow from the installed plugin.
+Codex must provide fresh isolated subagents for every used frontend, backend and test role. A dedicated template is unnecessary when the native subagent call can supply the role skill and artifact packet without forking full conversation history.
 
 ## Znane ograniczenia
 
@@ -110,3 +115,4 @@ No dedicated Codex agent template is required. Invoke the plugin skill `llm-soft
 - It assumes local validation commands can be discovered from the project. If not, record the gap instead of inventing commands.
 - It does not define product requirements by itself; unclear product decisions remain assumptions or questions.
 - It should not be copied into a project manually. Install and invoke it through the native plugin mechanism.
+- Hosts without native isolated subagent capability cannot run this workflow; focused standalone execution skills remain available outside `new-feature`.

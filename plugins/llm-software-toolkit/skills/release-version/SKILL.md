@@ -16,6 +16,7 @@ Treat the bump request as consent to prepare a plugin release. Before any commit
 Allow changes only in:
 
 - `plugins/llm-software-toolkit/`
+- `scripts/validate-plugin.sh`, only when its changes validate the plugin version being published
 - `.agents/plugins/marketplace.json`
 - `.claude-plugin/marketplace.json`
 - `CHANGELOG.md`

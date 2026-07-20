@@ -23,6 +23,8 @@ When the plugin is installed, invoke:
 /llm-software-toolkit:new-feature
 ```
 
+The workflow requires a new isolated Task subagent for every used frontend, backend and test role. Pass the workflow artifact packet, not the lead conversation history; missing isolation blocks the workflow.
+
 ## Release
 
 For preparing and publishing a toolkit release, use:

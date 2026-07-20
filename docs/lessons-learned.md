@@ -14,6 +14,18 @@ Ten dokument zapisuje wnioski z rozwoju toolkitu. Dopisuj wpis, gdy zmiana ujawn
 
 ## Entries
 
+### 2026-07-20 - Release scope must include its validator
+
+- Change: Allowed `release-version` to publish changes to the repository plugin validator when they validate the plugin version being released.
+- Lesson: A release skill cannot require a validator while excluding necessary validator changes from its release allowlist.
+- Follow-up: Keep validation tooling narrowly allowlisted by exact path and require every validator change to belong to the plugin release.
+
+### 2026-07-20 - Execution-role isolation must fail closed
+
+- Change: Required fresh history-isolated frontend, backend and test subagents in `new-feature`, with complete artifact packets and observable delegation reports.
+- Lesson: Delegation language still permits lead-context execution or full-history children unless isolation, handoff contents and the no-fallback failure mode are explicit.
+- Follow-up: Keep discovery, planning and integration in the lead; block the workflow when native isolation is unavailable and preserve standalone role skills outside it.
+
 ### 2026-07-19 - Decision support should elicit before advising
 
 - Change: Split `decision-tradeoffs` into requirements clarification, separate benefits and drawbacks turns for each option, and a later analysis that responds before adding new considerations.

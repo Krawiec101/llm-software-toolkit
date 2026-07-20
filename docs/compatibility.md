@@ -27,7 +27,7 @@ codex plugin add llm-software-toolkit@llm-software-toolkit
 llm-software-toolkit:new-feature
 ```
 
-Codex-specific agent templates are optional. The current plugin does not require a dedicated Codex template.
+Codex must support fresh isolated execution subagents to run `new-feature`. Agent templates remain optional, but isolation and artifact-packet handoff are mandatory.
 
 ## Claude Code
 
@@ -42,11 +42,11 @@ Install the plugin from the marketplace and invoke namespaced skills such as:
 /llm-software-toolkit:new-feature
 ```
 
-Claude Code subagents are optional. The current plugin can delegate to project-defined frontend, backend, test or review subagents when a target project already provides them.
+Claude Code must create fresh Task subagents for every used frontend, backend and test role. Project-defined agents are compatible only when invoked without the lead conversation history and with the required artifact packet.
 
 ## Workflow availability
 
-`new-feature` is shared by Codex and Claude Code. It has no required tool-specific agent.
+`new-feature` is shared by Codex and Claude Code and requires native isolated subagent capability. Missing isolation is a blocker, not a local-execution fallback. Focused frontend, backend and test skills can still be invoked standalone outside this workflow.
 
 `debug-bug` is not included in this plugin release. If added later, decide whether it should be a workflow, a skill, a Claude Code agent, a Codex template, a prompt command, documentation, or a combination based on the classification rules in `docs/authoring-guide.md`.
 

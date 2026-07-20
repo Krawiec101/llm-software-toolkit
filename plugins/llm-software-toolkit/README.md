@@ -54,7 +54,7 @@ Use `llm-software-toolkit:ship` to record changes under `Unreleased` and create 
 
 ## Workflows
 
-- `new-feature` - implement a feature through full business discovery, separate approval of the business brief and technical plan, parallel layer work where independent, tests, validation and PR notes.
+- `new-feature` - implement a feature through approved discovery and planning, isolated frontend/backend/test subagents, integration, validation and PR notes. Native isolated subagents are required.
 
 `implement-feature` is an alias concept for `new-feature`; it is not a separate workflow directory. `debug-bug` is not included in this plugin release.
 
